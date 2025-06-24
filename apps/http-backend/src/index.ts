@@ -19,7 +19,9 @@ app.post("/signin",(req,res)=>{
 })
 
 app.post("/room",middleware,(req,res)=>{
-    
+    res.json({
+        roomId:"123"
+    })
 })
 
 app.listen(3001, () => {

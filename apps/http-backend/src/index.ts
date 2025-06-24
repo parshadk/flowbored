@@ -1,6 +1,8 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 import { middleware } from "./middleware.";
+
+//add common package for jwt secret
 const JWT_SECRET = "your_jwt_secret_key"; 
 const app = express();
 

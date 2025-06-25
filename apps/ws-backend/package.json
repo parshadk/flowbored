@@ -16,6 +16,10 @@
     "jsonwebtoken": "^9.0.2",
     "ws": "^8.18.2"
   },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@repo/common-backend":" workspace:*"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

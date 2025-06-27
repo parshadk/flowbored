@@ -39,6 +39,9 @@ importers:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
+      '@repo/zod-package':
+        specifier: workspace:*
+        version: link:../../packages/zod-package
 
   apps/web:
     dependencies:
@@ -98,6 +101,9 @@ importers:
       '@repo/common-backend':
         specifier: workspace:*
         version: link:../../packages/common-backend
+      '@repo/zod-package':
+        specifier: workspace:*
+        version: link:../../packages/zod-package
 
   packages/common-backend:
     dependencies:

@@ -2,7 +2,7 @@ import express from "express";
 import jwt from "jsonwebtoken";
 import { middleware } from "./middleware.";
 import {JWT_SECRET} from '@repo/common-backend/config'
-//add common package for jwt secret
+
 const app = express();
 
 app.post("/signup",(req,res)=>{

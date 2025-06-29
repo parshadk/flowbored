@@ -7,6 +7,7 @@ const app = express();
 
 app.post("/signup",(req,res)=>{
     const data = CreateUserSchema.safeParse(req.body);
+    //add validation
     if (!data.success) {
         res.status(400).json({ msg:"Invalid creds" });
         return

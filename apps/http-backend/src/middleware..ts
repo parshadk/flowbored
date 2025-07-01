@@ -1,13 +1,22 @@
 import { NextFunction, Request, Response } from "express";
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 
 import {JWT_SECRET} from "@repo/common-backend/config"
-export function middleware(req:Request,res:Response,next:NextFunction) {
+
+interface ExtendedJwt extends JwtPayload {
+  userId: string;
+}
+
+export interface AuthenticatedRequest extends Request {
+  userId?: string;
+}
+
+export function middleware(req:AuthenticatedRequest,res:Response,next:NextFunction) {
     const token=req.headers["authorization"] ?? '';
-    const decoded=jwt.verify(token,JWT_SECRET);
+    const decoded=jwt.verify(token,JWT_SECRET) as ExtendedJwt ;
 
     if(decoded){
-        // @ts-ignore
+   
         req.userId=decoded.userId;
         next();
     } else {

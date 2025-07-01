@@ -4,14 +4,32 @@ import { middleware } from "./middleware.";
 import {JWT_SECRET} from '@repo/common-backend/config'
 import {CreateUserSchema, SigninSchema,CreateRoomSchema} from "@repo/zod-package/types"
 const app = express();
+import {prismaClient} from '@repo/db/client'
 
-app.post("/signup",(req,res)=>{
-    const data = CreateUserSchema.safeParse(req.body);
-    //add validation
-    if (!data.success) {
+app.post("/signup",async (req,res)=>{
+    const parsedData = CreateUserSchema.safeParse(req.body);
+    
+    if (!parsedData.success) {
         res.status(400).json({ msg:"Invalid creds" });
         return
     }
+    try {
+        await prismaClient.user.create({
+        data:{
+            name:parsedData.data.username,
+            email:parsedData.data.email,
+            password:parsedData.data.password
+            
+        }
+        });
+        res.json({
+            msg:"User created successfully"
+        });
+    } catch (err) {
+        res.status(411).json({ msg:"email already exists" });
+    }
+    
+    
 })
 
 app.post("/signin",(req,res)=>{

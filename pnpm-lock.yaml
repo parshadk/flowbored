@@ -104,6 +104,9 @@ importers:
       '@repo/common-backend':
         specifier: workspace:*
         version: link:../../packages/common-backend
+      '@repo/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@repo/zod-package':
         specifier: workspace:*
         version: link:../../packages/zod-package

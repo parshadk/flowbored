@@ -67,7 +67,7 @@ wss.on('connection', function connection(ws,request) {
       if(!user){
         return
       }  
-      user.rooms=user?.rooms.filter(x => x === parsedData.roomId);
+      user.rooms=user?.rooms.filter(x => x === parsedData.room);
 
     }
     if(parsedData.type === 'sendMessage') {

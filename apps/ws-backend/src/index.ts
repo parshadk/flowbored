@@ -57,7 +57,7 @@ wss.on('connection', function connection(ws,request) {
 
   ws.on('message',async function message(data) {
     const parsedData = JSON.parse(data as unknown as string);
-
+    
     if(parsedData.type === 'joinRoom') {
       const user=users.find(u=> u.ws===ws);
       user?.rooms.push(parsedData.roomId);
@@ -71,13 +71,9 @@ wss.on('connection', function connection(ws,request) {
 
     }
     if(parsedData.type === 'sendMessage') {
-      const user=users.find(u=> u.ws===ws);
-      if(!user){
-        return
-      }  
       const roomId = parsedData.roomId;
       const message = parsedData.message;
-      //temporary solution to store messages in the database
+      //temp sol to store messages in the database
       await prismaClient.chat.create({
         data:{
           roomId,
@@ -86,13 +82,12 @@ wss.on('connection', function connection(ws,request) {
         }
       })
       // Broadcast the message to all users in the room
-      users.forEach(u => {
-        if(u.rooms.includes(roomId)) {
-          u.ws.send(JSON.stringify({
-            type: 'message',
-            roomId,
-            message,
-            userId: user.userId
+      users.forEach(user => {
+        if(user.rooms.includes(roomId)) {
+          user.ws.send(JSON.stringify({
+            type: 'chat',
+            roomId: roomId,
+            message:message
           }));
         }
       });

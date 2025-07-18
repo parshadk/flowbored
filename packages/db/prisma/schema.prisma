@@ -22,6 +22,7 @@ model User{
   pfp       String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  resetPasswordExpire DateTime?
   rooms     Room[]
   chats     Chat[]
 

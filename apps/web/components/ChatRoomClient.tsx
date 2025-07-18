@@ -1,4 +1,4 @@
-"use client "
+"use client"
 import { useEffect, useState } from "react";
 import { useSockets } from "../hooks/useSockets";
 export function ChatRoomClient({
@@ -24,10 +24,11 @@ export function ChatRoomClient({
                 }
             }
         }
+        
     },[loading,socket,id]);
     return (
         <div>
-            {messages.map(m=>(
+            {chats.map(m=>(
                 <div>
                     {m.message}
                 </div>

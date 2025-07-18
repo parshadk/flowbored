@@ -70,7 +70,7 @@ wss.on('connection', function connection(ws,request) {
       user.rooms=user?.rooms.filter(x => x === parsedData.room);
 
     }
-    if(parsedData.type === 'sendMessage') {
+    if(parsedData.type === 'chat') {
       const roomId = parsedData.roomId;
       const message = parsedData.message;
       //temp sol to store messages in the database

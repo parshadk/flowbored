@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { 
   Palette, 
   Users, 
@@ -88,13 +89,11 @@ function Home() {
               Transform your ideas into visual masterpieces with the power of artificial intelligence.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="bg-gradient-to-r from-orange-500 to-teal-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-orange-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
-                Start Creating Free
-              </button>
-              <button className="flex items-center space-x-2 bg-white text-gray-700 px-8 py-4 rounded-full border-2 border-orange-200 hover:border-orange-300 transition-all duration-300">
-                <Play className="w-5 h-5" />
-                <span>Watch Demo</span>
-              </button>
+              <Link href="/signup">
+                <button className="bg-gradient-to-r from-orange-500 to-teal-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-orange-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                  Start Creating Free
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -284,7 +283,7 @@ function Home() {
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Free</h3>
               <div className="text-4xl font-bold text-gray-900 mb-2">$0</div>
               <p className="text-gray-600 mb-6">Per month</p>
-              <ul className="space-y-4 mb-8">
+              <ul className="space-y-4 mb-8 text-black">
                 <li className="flex items-center">
                   <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
                   <span>Up to 3 collaborators</span>
@@ -310,7 +309,7 @@ function Home() {
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Pro</h3>
               <div className="text-4xl font-bold text-gray-900 mb-2">$12</div>
               <p className="text-gray-600 mb-6">Per user/month</p>
-              <ul className="space-y-4 mb-8">
+              <ul className="space-y-4 mb-8 text-black">
                 <li className="flex items-center">
                   <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
                   <span>Unlimited collaborators</span>
@@ -337,7 +336,7 @@ function Home() {
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Enterprise</h3>
               <div className="text-4xl font-bold text-gray-900 mb-2">Custom</div>
               <p className="text-gray-600 mb-6">Contact us</p>
-              <ul className="space-y-4 mb-8">
+              <ul className="space-y-4 mb-8 text-black">
                 <li className="flex items-center">
                   <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
                   <span>Custom integrations</span>
@@ -373,12 +372,12 @@ function Home() {
             Join thousands of teams already creating amazing things with Flowboard
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-orange-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-orange-50 transition-colors shadow-lg">
-              Start Creating Free
-            </button>
-            <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-orange-600 transition-colors">
-              Schedule Demo
-            </button>
+            <Link href="/signup" >
+              <button className="bg-white text-orange-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-orange-50 transition-colors shadow-lg">
+                Start Creating Free
+              </button>
+            </Link>
+            
           </div>
         </div>
       </section>

@@ -122,7 +122,7 @@ export const sendMail = async (email:any, subject:any, data:any) => {
 
       <div class="footer">
         <p>© ${new Date().getFullYear()} Flowboard. All rights reserved.</p>
-        <p>support@edufinance.com</p>
+        <p>support@flowboard.com</p>
       </div>
     </div>
   </div>
@@ -252,7 +252,7 @@ export const sendForgotMail = async (subject:any, data:any) => {
     <div class="card">
       <div class="logo">Flowboard</div>
       <h1>Reset Your Password</h1>
-      <p>Hello, we received a request to reset your EduFinance account password.</p>
+      <p>Hello, we received a request to reset your Flowboard account password.</p>
       <p>Click the button below to reset your password. This link will expire shortly.</p>
 
       <a href="${process.env.frontendurl}/reset-password?token=${data.token}" style="color: white;" class="button">

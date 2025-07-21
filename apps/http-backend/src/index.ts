@@ -178,58 +178,6 @@ app.post("/room",middleware,async (req,res)=>{
     }
 
 })
-app.get("/chat/:roomId",async (req,res)=>{
-    const roomId=req.params.roomId;
-    if(!roomId){
-        res.status(400).json({ msg:"Room ID is required" });
-        return
-    }
-    const messages= await prismaClient.chat.findMany({
-        where:{
-            
-            roomId:parseInt(roomId)
-        },
-        orderBy:{
-            id:'desc'
-        },
-        take:50
-    })
-    res.json({
-        messages
-    })
-})
-
-app.get("/room/:slug",async (req,res)=>{
-    const slug=req.params.slug;
-    if(!slug){
-        res.status(400).json({ msg:"Room slug is required" });
-        return
-    }
-    const room= await prismaClient.room.findFirst({
-        where:{
-            slug:slug
-        }
-    })
-    if(!room){
-        res.status(404).json({ msg:"Room not found" });
-        return
-    }
-    res.json({
-        roomId: room.id,
-        slug: room.slug,
-        adminId: room.adminId
-    })
-})
-
-app.get("/",(req,res)=>{
-    res.json({
-        msg:"Welcome to Flowboard API"
-    })
-})
-
-app.listen(3000, () => {
-    console.log("Server is running on port ");  
-});
 
 app.post("/forgot-password", async (req, res) => {
     try{
@@ -309,3 +257,56 @@ app.post("/reset-password", async (req, res) => {
     })
     return
 })
+app.get("/chat/:roomId",async (req,res)=>{
+    const roomId=req.params.roomId;
+    if(!roomId){
+        res.status(400).json({ msg:"Room ID is required" });
+        return
+    }
+    const messages= await prismaClient.chat.findMany({
+        where:{
+            
+            roomId:parseInt(roomId)
+        },
+        orderBy:{
+            id:'desc'
+        },
+        take:50
+    })
+    res.json({
+        messages
+    })
+})
+
+app.get("/room/:slug",async (req,res)=>{
+    const slug=req.params.slug;
+    if(!slug){
+        res.status(400).json({ msg:"Room slug is required" });
+        return
+    }
+    const room= await prismaClient.room.findFirst({
+        where:{
+            slug:slug
+        }
+    })
+    if(!room){
+        res.status(404).json({ msg:"Room not found" });
+        return
+    }
+    res.json({
+        roomId: room.id,
+        slug: room.slug,
+        adminId: room.adminId
+    })
+})
+
+app.get("/",(req,res)=>{
+    res.json({
+        msg:"Welcome to Flowboard API"
+    })
+})
+
+app.listen(3000, () => {
+    console.log("Server is running on port ");  
+});
+
